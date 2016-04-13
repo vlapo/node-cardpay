@@ -36,7 +36,7 @@ describe('Cardpay HMAC', function(){
                 TIMESTAMP: '01092014125505'
             };
             var paymentOptions = {
-                secureKey: '31323334353637383930313233343536373839303132333435363738393031323132333435363738393031323334353637383930313233343536373839303132',
+                securityKey: '31323334353637383930313233343536373839303132333435363738393031323132333435363738393031323334353637383930313233343536373839303132',
                 cipher: 'HMAC'
             };
 
@@ -67,7 +67,7 @@ describe('Cardpay HMAC', function(){
             var configObj = {
                 MID: '9999',
                 RURL: 'https://moja.tatrabanka.sk/cgi-bin/e-commerce/start/example.jsp',
-                secureKey: '31323334353637383930313233343536373839303132333435363738393031323132333435363738393031323334353637383930313233343536373839303132',
+                securityKey: '31323334353637383930313233343536373839303132333435363738393031323132333435363738393031323334353637383930313233343536373839303132',
                 cipher: 'HMAC'
             };
 
@@ -96,7 +96,7 @@ describe('Cardpay HMAC', function(){
                 TIMESTAMP: '01092014125505'
             };
             var paymentOptions = {
-                secureKey: '31323334353637383930313233343536373839303132333435363738393031323132333435363738393031323334353637383930313233343536373839303132',
+                securityKey: '31323334353637383930313233343536373839303132333435363738393031323132333435363738393031323334353637383930313233343536373839303132',
                 cipher: 'HMAC'
             };
 
@@ -112,7 +112,7 @@ describe('Cardpay HMAC', function(){
 
     describe('confirm', function(){
 
-        it('should return right redirect URL', function(done){
+        it('should execute success', function(done){
 
             var responseData = {
                 RES: 'OK',
@@ -127,13 +127,13 @@ describe('Cardpay HMAC', function(){
                 ECDSA: '3046022100dd4b44fcf32f4b818a17f9bbe938cd53024b47024c07dddfdf7f105265802a400221009665a7098c6eba40c56342d4b83fec2942a648b238adf51708d75de1a374afeb'
             };
             var options = {
-                secureKey: 'gRg6r7+Qe2Bf4f23l9JW9/WJWLQM4jIsD0FGMZsfiSSyyT9KbNWUX7tlLlVK0tfz',
+                securityKey: 'gRg6r7+Qe2Bf4f23l9JW9/WJWLQM4jIsD0FGMZsfiSSyyT9KbNWUX7tlLlVK0tfz',
                 cipher: 'HMAC'
             };
 
-            cardpay.confirm(responseData, options, function(err, success){
+            cardpay.confirm(responseData, options, function(err, responseOK){
                 should.not.exist(err);
-                success.should.equal(true);
+                responseOK.should.equal(true);
                 done();
             });
 

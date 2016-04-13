@@ -33,13 +33,14 @@ describe('CardPayResponse', function(){
             ECDSA_KEY: 1,
             ECDSA: '3046022100dd4b44fcf32f4b818a17f9bbe938cd53024b47024c07dddfdf7f105265802a400221009665a7098c6eba40c56342d4b83fec2942a648b238adf51708d75de1a374afeb'
         },{
-            secureKey: 'gRg6r7+Qe2Bf4f23l9JW9/WJWLQM4jIsD0FGMZsfiSSyyT9KbNWUX7tlLlVK0tfz',
+            securityKey: 'gRg6r7+Qe2Bf4f23l9JW9/WJWLQM4jIsD0FGMZsfiSSyyT9KbNWUX7tlLlVK0tfz',
             cipher: 'HMAC'
         });
 
-        request.validateSign(function(err){
+        request.validateSign(function(err, invalid){
 
             should.not.exist(err);
+            should(invalid).be.exactly(null);
 
             done();
         });
@@ -59,13 +60,14 @@ describe('CardPayResponse', function(){
             ECDSA_KEY: 1,
             ECDSA: '3046022100dd4b44fcf32f4b818a17f9bbe938cd53024b47024c07dddfdf7f105265802a400221009665a7098c6eba40c56342d4b83fec2942a648b238adf51708d75de1a374afeb'
         },{
-            secureKey: 'gRg6r7+Qe2Bf4f23l9JW9/WJWLQM4jIsD0FGMZsfiSSyyT9KbNWUX7tlLlVK0tfz',
+            securityKey: 'gRg6r7+Qe2Bf4f23l9JW9/WJWLQM4jIsD0FGMZsfiSSyyT9KbNWUX7tlLlVK0tfz',
             cipher: 'HMAC'
         });
 
-        request.validateSign(function(err){
+        request.validateSign(function(err, invalid){
 
-            err.should.equal('INHMAC');
+            should.not.exist(err);
+            invalid.should.equal('HMAC');
 
             done();
         });
@@ -85,13 +87,14 @@ describe('CardPayResponse', function(){
             ECDSA_KEY: 2,
             ECDSA: '3046022100dd4b44fcf32f4b818a17f9bbe938cd53024b47024c07dddfdf7f105265802a400221009665a7098c6eba40c56342d4b83fec2942a648b238adf51708d75de1a374afeb'
         },{
-            secureKey: 'gRg6r7+Qe2Bf4f23l9JW9/WJWLQM4jIsD0FGMZsfiSSyyT9KbNWUX7tlLlVK0tfz',
+            securityKey: 'gRg6r7+Qe2Bf4f23l9JW9/WJWLQM4jIsD0FGMZsfiSSyyT9KbNWUX7tlLlVK0tfz',
             cipher: 'HMAC'
         });
 
-        request.validateSign(function(err){
+        request.validateSign(function(err, invalid){
 
-            err.should.equal('INECDSA');
+            should.not.exist(err);
+            invalid.should.equal('ECDSA');
 
             done();
         });
@@ -118,20 +121,16 @@ describe('CardPayResponse', function(){
             ECDSA_KEY: 2,
             ECDSA: '3046022100dd4b44fcf32f4b818a17f9bbe938cd53024b47024c07dddfdf7f105265802a400221009665a7098c6eba40c56342d4b83fec2942a648b238adf51708d75de1a374afeb'
         },{
-            secureKey: 'gRg6r7+Qe2Bf4f23l9JW9/WJWLQM4jIsD0FGMZsfiSSyyT9KbNWUX7tlLlVK0tfz',
+            securityKey: 'gRg6r7+Qe2Bf4f23l9JW9/WJWLQM4jIsD0FGMZsfiSSyyT9KbNWUX7tlLlVK0tfz',
             cipher: 'HMAC'
         });
 
-        try{
-        request.validateSign(function(err){
+        request.validateSign(function(err, invalid){
 
-            err.should.equal('ERRPUB');
+            should.exist(err);
 
             done();
         });
-        }catch(err){
-            console.log('catch', err);
-        }
     });
 
 });

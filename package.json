@@ -1,14 +1,14 @@
 {
-  "name": "node-cardpay",
+  "name": "cardpay",
   "version": "0.0.1",
-  "description": "Card pay node implementation.",
+  "description": "CardPay nodejs implementation.",
   "main": "lib/cardpay.js",
   "scripts": {
     "test": "mocha ./test/*.test.* --require should --reporter spec --colors"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vlapo/node-cardpay.git"
+    "url": "git+https://github.com/zwizu/node-cardpay.git"
   },
   "keywords": [
     "creditcard",
@@ -18,9 +18,9 @@
   "author": "VlaPo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vlapo/node-cardpay/issues"
+    "url": "https://github.com/zwizu/node-cardpay/issues"
   },
-  "homepage": "https://github.com/vlapo/node-cardpay#readme",
+  "homepage": "https://github.com/zwizu/node-cardpay#readme",
   "devDependencies": {
     "mocha": "^2.4.5",
     "nock": "^7.7.2",
